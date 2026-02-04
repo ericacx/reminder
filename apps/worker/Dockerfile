@@ -24,5 +24,6 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/packages/database ./packages/database
 COPY --from=builder /app/apps/worker/dist ./apps/worker/dist
 COPY --from=builder /app/apps/worker/package.json ./apps/worker/
+COPY --from=builder /app/apps/worker/node_modules ./apps/worker/node_modules
 
 CMD ["node", "apps/worker/dist/index.js"]
