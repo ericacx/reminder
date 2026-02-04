@@ -63,7 +63,7 @@ export function ReminderForm({ open, onOpenChange, reminder, onSuccess }: Remind
     }
   }, [webhooks, formData.webhookId])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
 
