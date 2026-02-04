@@ -1,9 +1,3 @@
-import dotenv from 'dotenv'
-import path from 'path'
-
-// 加载根目录的 .env 文件
-dotenv.config({ path: path.join(__dirname, '../../../.env') })
-
 import cron from 'node-cron'
 import { prisma, Status } from '@reminder/database'
 

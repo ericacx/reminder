@@ -1,6 +1,7 @@
 {
   "name": "@reminder/worker",
   "version": "1.0.0",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -9,7 +10,6 @@
   },
   "dependencies": {
     "@reminder/database": "workspace:*",
-    "dotenv": "^17.2.3",
     "node-cron": "^3.0.3"
   },
   "devDependencies": {
