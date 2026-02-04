@@ -15,6 +15,7 @@ COPY --from=deps /app/packages/database/node_modules ./packages/database/node_mo
 COPY --from=deps /app/apps/worker/node_modules ./apps/worker/node_modules
 COPY . .
 RUN pnpm --filter @reminder/database generate
+RUN pnpm --filter @reminder/database build
 RUN pnpm --filter @reminder/worker build
 
 FROM base AS runner
