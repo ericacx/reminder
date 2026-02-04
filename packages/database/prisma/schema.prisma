@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Reminder {
+  id           Int       @id @default(autoincrement())
+  title        String    @db.VarChar(200)
+  content      String?   @db.Text
+  remindAt     DateTime  @map("remind_at")
+  status       Status    @default(pending)
+  webhookId    Int       @map("webhook_id")
+  webhook      Webhook   @relation(fields: [webhookId], references: [id])
+  errorMessage String?   @map("error_message") @db.Text
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@index([remindAt, status])
+  @@map("reminders")
+}
+
+model Webhook {
+  id        Int        @id @default(autoincrement())
+  name      String     @db.VarChar(100)
+  url       String     @db.VarChar(500)
+  isDefault Boolean    @default(false) @map("is_default")
+  createdAt DateTime   @default(now()) @map("created_at")
+  reminders Reminder[]
+
+  @@map("webhooks")
+}
+
+enum Status {
+  pending
+  sent
+  failed
+}
