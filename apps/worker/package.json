@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@reminder/database": "workspace:*",
+    "dotenv": "^17.2.3",
     "node-cron": "^3.0.3"
   },
   "devDependencies": {

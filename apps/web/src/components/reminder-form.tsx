@@ -65,6 +65,12 @@ export function ReminderForm({ open, onOpenChange, reminder, onSuccess }: Remind
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (!formData.webhookId || formData.webhookId === '') {
+      toast.error('请先选择或创建一个推送群（Webhook）')
+      return
+    }
+
     setLoading(true)
 
     try {
@@ -83,8 +89,8 @@ export function ReminderForm({ open, onOpenChange, reminder, onSuccess }: Remind
       }
       onOpenChange(false)
       onSuccess()
-    } catch {
-      toast.error('操作失败')
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : '操作失败')
     } finally {
       setLoading(false)
     }

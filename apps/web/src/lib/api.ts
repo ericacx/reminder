@@ -29,6 +29,7 @@ export interface PaginatedResponse<T> {
 // Webhooks
 export async function getWebhooks(): Promise<Webhook[]> {
   const res = await fetch('/api/webhooks')
+  if (!res.ok) throw new Error('Failed to fetch webhooks')
   return res.json()
 }
 
@@ -38,6 +39,10 @@ export async function createWebhook(data: Omit<Webhook, 'id'>): Promise<Webhook>
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.error || 'Failed to create webhook')
+  }
   return res.json()
 }
 
@@ -53,6 +58,7 @@ export async function getReminders(
   if (params?.status) searchParams.set('status', params.status)
   if (params?.page) searchParams.set('page', params.page.toString())
   const res = await fetch(`/api/reminders?${searchParams}`)
+  if (!res.ok) throw new Error('Failed to fetch reminders')
   return res.json()
 }
 
@@ -67,6 +73,10 @@ export async function createReminder(data: {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.error || 'Failed to create reminder')
+  }
   return res.json()
 }
 
