@@ -18,6 +18,9 @@ importers:
         specifier: ^6.3.0
         version: 6.19.2(prisma@6.19.2(typescript@5.9.3))(typescript@5.9.3)
     devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.31
       prisma:
         specifier: ^6.3.0
         version: 6.19.2(typescript@5.9.3)
@@ -56,6 +59,9 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
+
+  '@types/node@20.19.31':
+    resolution: {integrity: sha512-5jsi0wpncvTD33Sh1UCgacK37FFwDn+EG7wCmEvs62fCvBL+n8/76cAYDok21NF6+jaVWIqKwCZyX7Vbu8eB3A==}
 
   c12@3.1.0:
     resolution: {integrity: sha512-uWoS8OU1MEIsOv8p/5a82c3H31LsWVR5qiyXVfBNOzfffjUWtPnhAb4BYI2uG2HfGmZmFjCtui5XNWaps+iFuw==}
@@ -167,6 +173,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+
 snapshots:
 
   '@prisma/client@6.19.2(prisma@6.19.2(typescript@5.9.3))(typescript@5.9.3)':
@@ -205,6 +214,10 @@ snapshots:
       '@prisma/debug': 6.19.2
 
   '@standard-schema/spec@1.1.0': {}
+
+  '@types/node@20.19.31':
+    dependencies:
+      undici-types: 6.21.0
 
   c12@3.1.0:
     dependencies:
@@ -308,3 +321,5 @@ snapshots:
   tinyexec@1.0.2: {}
 
   typescript@5.9.3: {}
+
+  undici-types@6.21.0: {}
